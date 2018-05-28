@@ -155,7 +155,51 @@ public:
 };
 ```
 
+## [657. 判断路线成圈](https://leetcode-cn.com/problems/judge-route-circle/description/)
+初始位置 (0, 0) 处有一个机器人。给出它的一系列动作，判断这个机器人的移动路线是否形成一个圆圈，换言之就是判断它是否会移回到原来的位置。
+移动顺序由一个字符串表示。每一个动作都是由一个字符来表示的。机器人有效的动作有 R（右），L（左），U（上）和 D（下）。输出应为 true 或 false，表示机器人移动路线是否成圈。<br>
+**示例 1:**
+```bash
+输入: "UD"
+输出: true
+```
+**示例 2:**
+```bash
+输入: "LL"
+输出: false
+```
 
+**Code:**
+```cpp
+class Solution {
+public:
+    bool judgeCircle(string moves) {
+        int nLeftCount = 0;
+        int nUpCount = 0;
+        for (int nIndex = 0; nIndex < moves.size(); ++nIndex)
+        {
+            if (moves[nIndex] == 'U')
+            {
+                ++nUpCount;
+            }
+            else if (moves[nIndex] == 'D')
+            {
+                --nUpCount;
+            }
+            else if (moves[nIndex] == 'L')
+            {
+                ++nLeftCount;
+            }
+            else if (moves[nIndex] == 'R')
+            {
+                --nLeftCount;
+            }
+        }
+        
+        return (nLeftCount == 0 && nUpCount == 0);
+    }
+};
+```
 
 ## [771. 宝石与石头](https://leetcode-cn.com/problems/jewels-and-stones/description/)
 给定字符串`J`代表石头中宝石的类型，和字符串`S`代表你拥有的石头。`S`中每个字符代表了一种你拥有的石头的类型，你想知道你拥有的石头中有多少是宝石。
@@ -192,6 +236,70 @@ public:
         }
         
         return nCount;
+    }
+};
+```
+
+## [807. 保持城市天际线](https://leetcode-cn.com/problems/max-increase-to-keep-city-skyline/description/)
+在二维数组`grid`中，`grid[i][j]`代表位于某处的建筑物的高度。 我们被允许增加任何数量（不同建筑物的数量可能不同）的建筑物的高度。 高度 0 也被认为是建筑物。
+最后，从新数组的所有四个方向（即顶部，底部，左侧和右侧）观看的“天际线”必须与原始数组的天际线相同。 城市的天际线是从远处观看时，由所有建筑物形成的矩形的外部轮廓。 请看下面的例子。
+建筑物高度可以增加的最大总和是多少？<br>
+```bash
+例子：
+输入： grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]
+输出： 35
+解释： 
+The grid is:
+[ [3, 0, 8, 4], 
+  [2, 4, 5, 7],
+  [9, 2, 6, 3],
+  [0, 3, 1, 0] ]
+
+从数组竖直方向（即顶部，底部）看“天际线”是：[9, 4, 8, 7]
+从水平水平方向（即左侧，右侧）看“天际线”是：[8, 7, 9, 3]
+
+在不影响天际线的情况下对建筑物进行增高后，新数组如下：
+
+gridNew = [ [8, 4, 8, 7],
+            [7, 4, 7, 7],
+            [9, 4, 8, 7],
+            [3, 3, 3, 3] ]
+```
+<br>
+**说明:**
+*   `1 < grid.length = grid[0].length <= 50`。
+*   `grid[i][j]` 的高度范围是：`[0, 100]`。
+*   一座建筑物占据一个`grid[i][j]`：换言之，它们是`1 x 1 x grid[i][j]`的长方体。
+<br>
+**Code:**
+```cpp
+class Solution {
+public:
+    int maxIncreaseKeepingSkyline(vector<vector<int>>& grid) {
+        int nGridSize = grid.size();
+        vector<int> vecHorizontalLine(nGridSize);
+        vector<int> vecVerticalLine(nGridSize);
+        for (int i = 0; i < grid.size(); ++i)
+        {
+            for (int j = 0; j < grid[i].size(); ++j)
+            {
+                vecVerticalLine[j] = max(vecVerticalLine[j], grid[i][j]);
+                vecHorizontalLine[i] = max(vecHorizontalLine[i], grid[i][j]);
+            }
+        }
+
+        int nTotalVal = 0;
+        for (int i = 0; i < grid.size(); ++i)
+        {
+            for (int j = 0; j < grid[i].size(); ++j)
+            {
+                int nNewVal = min(vecHorizontalLine[i], vecVerticalLine[j]);
+                nTotalVal += (nNewVal - grid[i][j]);
+                grid[i][j] = nNewVal;
+            }
+        }
+
+        return nTotalVal;
     }
 };
 ```
