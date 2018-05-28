@@ -1,6 +1,81 @@
 # LeetCode-Solution
 记录自己提交且AC的代码<br>
 
+## [52. N皇后 II](https://leetcode-cn.com/problems/n-queens-ii/description/)
+n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
+![上图为 8 皇后问题的一种解法。](images/8-queens.png)
+给定一个整数 n，返回 n 皇后不同的解决方案的数量。
+**示例:**
+```bash
+输入: 4
+输出: 2
+解释: 4 皇后问题存在如下两个不同的解法。
+[
+ [".Q..",  // 解法 1
+  "...Q",
+  "Q...",
+  "..Q."],
+
+ ["..Q.",  // 解法 2
+  "Q...",
+  "...Q",
+  ".Q.."]
+]
+```
+
+**Code:**
+```cpp
+class Solution {
+public:
+    int totalNQueens(int n) {
+        int nCount = 0;
+        int nCurIdx = 0;
+        vector<int> vecQueens;
+        recursiveWays(vecQueens, nCount, nCurIdx, n);
+        return nCount;
+    }
+    
+    void recursiveWays(vector<int>& vecQueens, int& nCount, int nCurIdx, int n)
+    {
+        for (int nIndex = 0; nIndex < n; ++nIndex)
+        {
+            if (canAttack(vecQueens, nCurIdx, nIndex))
+            {
+                continue;
+            }
+
+            if (nCurIdx == n - 1)
+            {
+                ++nCount;
+                continue;
+            }
+
+            vecQueens.push_back(nIndex);
+            recursiveWays(vecQueens, nCount, nCurIdx + 1, n);
+            vecQueens.erase(vecQueens.begin() + nCurIdx);
+        }
+    }
+    
+    bool canAttack(const vector<int>& vecQueens, int nCurIdx, int nCurPos)
+    {
+        if (!vecQueens.empty())
+        {
+            for (int nIndex = 0; nIndex < vecQueens.size(); ++nIndex)
+            {
+                int nLastPos = vecQueens[nIndex];
+                if (nLastPos == nCurPos 
+                    || abs(nCurIdx - nIndex) == abs(nCurPos - nLastPos))
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+};
+```
+
 ## [654. 最大二叉树](https://leetcode-cn.com/problems/maximum-binary-tree/description/)
 给定一个不含重复元素的整数数组。一个以此数组构建的最大二叉树定义如下：
 1.   二叉树的根是数组中的最大元素。
@@ -24,6 +99,7 @@
 注意:<br>
 1.给定的数组的大小在 [1, 1000] 之间。
 
+**Code:**
 ```cpp
 /**
  * Definition for a binary tree node.
@@ -98,6 +174,7 @@ public:
 *   `S`和`J`最多含有50个字母。
 *   `J`中的字符不重复。
 
+**Code:**
 ```cpp
 class Solution {
 public:
