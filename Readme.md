@@ -3,8 +3,8 @@
 
 ## [52. N皇后 II](https://leetcode-cn.com/problems/n-queens-ii/description/)
 n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
-![上图为 8 皇后问题的一种解法。](images/8-queens.png)
-给定一个整数 n，返回 n 皇后不同的解决方案的数量。
+![上图为 8 皇后问题的一种解法。](images/8-queens.png)<br>
+给定一个整数 n，返回 n 皇后不同的解决方案的数量。<br>
 **示例:**
 ```bash
 输入: 4
