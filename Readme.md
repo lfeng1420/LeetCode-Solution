@@ -270,6 +270,7 @@ gridNew = [ [8, 4, 8, 7],
 *   `1 < grid.length = grid[0].length <= 50`。
 *   `grid[i][j]` 的高度范围是：`[0, 100]`。
 *   一座建筑物占据一个`grid[i][j]`：换言之，它们是`1 x 1 x grid[i][j]`的长方体。<br>
+
 **Code:**
 ```cpp
 class Solution {
