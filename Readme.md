@@ -1,6 +1,55 @@
 # LeetCode-Solution
 记录自己提交且AC的代码<br>
 
+## [1. 两数之和](https://leetcode-cn.com/problems/two-sum/description/)
+给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。
+你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。<br>
+**示例:**
+```bash
+给定 nums = [2, 7, 11, 15], target = 9
+
+因为 nums[0] + nums[1] = 2 + 7 = 9
+所以返回 [0, 1]
+```
+
+**Code:**
+```cpp
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        map<int, vector<int>> mapNums;
+        for (int nIndex = 0; nIndex < nums.size(); ++nIndex)
+        {
+            mapNums[nums[nIndex]].push_back(nIndex);
+        }
+
+        vector<int> vecResult;
+        map<int, vector<int>>::iterator itNums = mapNums.begin();
+        for (; itNums != mapNums.end(); ++itNums)
+        {
+            int nOtherOne = target - itNums->first;
+            map<int, vector<int>>::iterator itNumsOther = mapNums.find(nOtherOne);
+            if (itNumsOther != mapNums.end())
+            {
+                if (itNumsOther != itNums)
+                {
+                    vecResult.push_back(itNums->second[0]);
+                    vecResult.push_back(itNumsOther->second[0]);
+                }
+                else
+                {
+                    vecResult.push_back(itNums->second[0]);
+                    vecResult.push_back(itNums->second[1]);
+                }
+                return vecResult;
+            }
+        }
+
+        return vecResult;
+    }
+};
+```
+
 ## [52. N皇后 II](https://leetcode-cn.com/problems/n-queens-ii/description/)
 n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
 ![上图为 8 皇后问题的一种解法。](images/8-queens.png)<br>
