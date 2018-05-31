@@ -3,7 +3,7 @@
 
 ## [52. N皇后 II](https://leetcode-cn.com/problems/n-queens-ii/description/)
 n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
-![上图为 8 皇后问题的一种解法。](images/8-queens.png)<br>
+![上图为 8 皇后问题的一种解法。](images/52_8_queens.png)<br>
 给定一个整数 n，返回 n 皇后不同的解决方案的数量。<br>
 **示例:**
 ```bash
@@ -192,6 +192,86 @@ public:
         }
         
         return nCount;
+    }
+};
+```
+
+## [814. 二叉树剪枝](https://leetcode-cn.com/problems/binary-tree-pruning/description/)
+
+给定二叉树根结点`root`，此外树的每个结点的值要么是`0`，要么是`1`。
+返回移除了所有不包含`1`的子树的原二叉树。
+( 节点`X`的子树为`X`本身，以及所有`X`的后代。)<br>
+**示例1:**
+```bash
+输入: [1,null,0,0,1]
+输出: [1,null,0,null,1]
+ 
+解释: 
+只有红色节点满足条件“所有不包含 1 的子树”。
+右图为返回的答案。
+```
+[](images/814_0.png)<br>
+**示例2:**
+```bash
+输入: [1,0,1,0,0,0,1]
+输出: [1,null,1,null,1]
+```
+[](images/814_1.png)<br>
+**示例3:**
+```bash
+输入: [1,1,0,1,1,0,1,0]
+输出: [1,1,0,1,1,null,1]
+```
+[](images/814_2.png)<br>
+说明:
+给定的二叉树最多有`100`个节点。
+每个节点的值只会为`0`或 `1`。<br>
+
+
+**Code:**
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* pruneTree(TreeNode* root) {
+        if (root != nullptr)
+        {
+            updateTree(root->left, root);
+            updateTree(root->right, root);
+        }
+        
+        return root;
+    }
+    
+    void updateTree(TreeNode* pCur, TreeNode* pParent)
+    {
+        if (pCur == nullptr)
+        {
+            return;
+        }
+        
+        updateTree(pCur->left, pCur);
+        updateTree(pCur->right, pCur);
+        
+        if (pCur->val == 0 && pCur->left == nullptr && pCur->right == nullptr)
+        {
+            if (pParent->left == pCur)
+            {
+                pParent->left = nullptr;
+            }
+            else if (pParent->right == pCur)
+            {
+                pParent->right = nullptr;
+            }
+        }
     }
 };
 ```
