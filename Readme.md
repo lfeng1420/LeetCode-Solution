@@ -109,6 +109,52 @@ public:
 };
 ```
 
+## [7. 反转整数](https://leetcode-cn.com/problems/reverse-integer/description/)
+给定一个 32 位有符号整数，将整数中的数字进行反转。<br>
+**示例 1:**
+```bash
+输入: 123
+输出: 321
+```
+**示例 2:**
+```bash
+输入: -123
+输出: -321
+```
+**示例 3:**
+```bash
+输入: 120
+输出: 21
+```
+**说明：**<br>
+假设我们的环境只能存储`32`位有符号整数，其数值范围是`[-2^31,  2^31 - 1]`。根据这个假设，如果反转后的整数溢出，则返回 0。<br>
+
+**Code:**
+```cpp
+class Solution {
+public:
+    int reverse(int x) {
+        int nVal = 0;
+        bool bPositiveFlag = (x >= 0);
+        while (x != 0)
+        {
+            int nNewVal = nVal * 10 + (x % 10);
+            if ((bPositiveFlag && nNewVal < nVal)
+               || (!bPositiveFlag && nNewVal > nVal)
+               || ((nNewVal - x % 10) / 10 != nVal))
+            {
+                return 0;
+            }
+            
+            x /= 10;
+            nVal = nNewVal;
+        }
+        
+        return nVal;
+    }
+};
+```
+
 ## [8. 字符串转整数 (atoi)](https://leetcode-cn.com/problems/string-to-integer-atoi/description/)
 实现`atoi`，将字符串转为整数。<br>
 在找到第一个非空字符之前，需要移除掉字符串中的空格字符。如果第一个非空字符是正号或负号，选取该符号，并将其与后面尽可能多的连续的数字组合起来，这部分字符即为整数的值。如果第一个非空字符是数字，则直接将其与之后连续的数字字符组合起来，形成整数。<br>
