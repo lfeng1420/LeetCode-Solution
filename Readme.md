@@ -368,6 +368,7 @@ lRUCache.get(4);    // 返回 4
 最多调用 2 * 10^5 次 get 和 put
 ```
 
+**Code:**
 ```cpp
 class LRUCache {
 public:
@@ -518,6 +519,7 @@ testcases:
 -5000 <= Node.val <= 5000
 ```
 
+**Code:**
 ```cpp
 /**
  * Definition for singly-linked list.
@@ -567,6 +569,7 @@ public:
 -10^4 <= nums[i] <= 10^4
 ```
 
+**Code:**
 ```cpp
 class Solution {
 public:
