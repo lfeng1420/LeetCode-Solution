@@ -364,8 +364,8 @@ lRUCache.get(4);    // 返回 4
 ```
 1 <= capacity <= 3000
 0 <= key <= 10000
-0 <= value <= 105
-最多调用 2 * 105 次 get 和 put
+0 <= value <= 10^5
+最多调用 2 * 10^5 次 get 和 put
 ```
 
 ```cpp
@@ -498,6 +498,83 @@ testcases:
  * int param_1 = obj->get(key);
  * obj->put(key,value);
  */
+```
+
+## [206. 反转链表](https://leetcode-cn.com/problems/reverse-linked-list/)
+给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
+```
+输入：head = [1,2,3,4,5]
+输出：[5,4,3,2,1]
+输入：head = [1,2]
+输出：[2,1]
+输入：head = []
+输出：[]
+```
+
+**提示：**
+```
+提示：
+链表中节点的数目范围是 [0, 5000]
+-5000 <= Node.val <= 5000
+```
+
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* pCur = head;
+        ListNode* pNext = nullptr;
+        while (pCur != nullptr)
+        {
+            ListNode* pTmp = pCur->next;
+            pCur->next = pNext;
+            pNext = pCur;
+            pCur = pTmp;
+        }
+
+        return pNext;
+    }
+};
+```
+
+## [215. 数组中的第K个最大元素](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
+给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
+请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
+**示例：**
+```
+示例 1:
+输入: [3,2,1,5,6,4] 和 k = 2
+输出: 5
+
+示例 2:
+输入: [3,2,3,1,2,4,5,5,6] 和 k = 4
+输出: 4
+```
+
+**提示：**
+```
+1 <= k <= nums.length <= 10^4
+-10^4 <= nums[i] <= 10^4
+```
+
+```cpp
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        std::sort(nums.begin(), nums.end(), std::greater<int>());
+        return nums[k-1];
+    }
+};
 ```
 
 
