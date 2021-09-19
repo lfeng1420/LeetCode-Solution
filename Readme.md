@@ -332,6 +332,175 @@ public:
 };
 ```
 
+## [146. LRU 缓存机制](https://leetcode-cn.com/problems/lru-cache/)
+运用你所掌握的数据结构，设计和实现一个`LRU (最近最少使用) 缓存机制`。
+实现 `LRUCache` 类：
+* `LRUCache(int capacity)` 以正整数作为容量 `capacity` 初始化 `LRU` 缓存
+* `int get(int key)` 如果关键字 `key` 存在于缓存中，则返回关键字的值，否则返回 `-1` 。
+* `void put(int key, int value)` 如果关键字已经存在，则变更其数据值；如果关键字不存在，则插入该组「关键字-值」。当缓存容量达到上限时，它应该在写入新数据之前删除最久未使用的数据值，从而为新的数据值留出空间。
+
+**示例：**
+```
+输入
+["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+输出
+[null, null, null, 1, null, -1, null, -1, 3, 4]
+
+解释
+LRUCache lRUCache = new LRUCache(2);
+lRUCache.put(1, 1); // 缓存是 {1=1}
+lRUCache.put(2, 2); // 缓存是 {1=1, 2=2}
+lRUCache.get(1);    // 返回 1
+lRUCache.put(3, 3); // 该操作会使得关键字 2 作废，缓存是 {1=1, 3=3}
+lRUCache.get(2);    // 返回 -1 (未找到)
+lRUCache.put(4, 4); // 该操作会使得关键字 1 作废，缓存是 {4=4, 3=3}
+lRUCache.get(1);    // 返回 -1 (未找到)
+lRUCache.get(3);    // 返回 3
+lRUCache.get(4);    // 返回 4
+```
+
+**提示：**
+```
+1 <= capacity <= 3000
+0 <= key <= 10000
+0 <= value <= 105
+最多调用 2 * 105 次 get 和 put
+```
+
+```cpp
+class LRUCache {
+public:
+    LRUCache(int capacity) : m_nCap(capacity), m_nCount(0), m_pHead(nullptr), m_pTail(nullptr) {
+    }
+
+    int get(int key) {
+        auto it = m_mapVal.find(key);
+        if (it == m_mapVal.end())
+        {
+            return -1;
+        }
+
+        _SNode& stNode = it->second;
+        if (stNode.nVal != -1)
+        {
+            removeNode(stNode);
+            appendToTail(stNode);
+        }
+
+        return stNode.nVal;
+    }
+
+    void put(int key, int value) {
+        _SNode& stNode = m_mapVal[key];
+        if (stNode.nVal != -1)
+        {
+            stNode.nVal = value;
+            removeNode(stNode);
+            appendToTail(stNode);
+            return;
+        }
+
+        if (m_nCount == m_nCap)
+        {
+            _SNode* pHead = m_pHead;
+            pHead->nVal = -1;
+            removeNode(*pHead);
+            m_mapVal.erase(pHead->nKey);
+        }
+        else
+        {
+            ++m_nCount;
+        }
+
+        stNode.nKey = key;
+        stNode.nVal = value;
+        appendToTail(stNode);
+    }
+
+private:
+    struct _SNode;
+	void removeNode(_SNode& stNode)
+	{
+		if (stNode.pPre != nullptr)
+		{
+			stNode.pPre->pNext = stNode.pNext;
+		}
+		if (stNode.pNext != nullptr)
+		{
+			stNode.pNext->pPre = stNode.pPre;
+		}
+
+		if (m_pTail == &stNode)
+		{
+			m_pTail = stNode.pPre;
+		}
+		if (m_pHead == &stNode)
+		{
+			m_pHead = stNode.pNext;
+		}
+
+		stNode.pPre = nullptr;
+		stNode.pNext = nullptr;
+	}
+
+    void appendToTail(_SNode& stNode)
+    {
+        if (m_pTail == nullptr)
+        {
+            m_pTail = &stNode;
+            m_pHead = m_pTail;
+            return;
+        }
+
+        if (m_pTail == &stNode)
+        {
+            return;
+        }
+
+        m_pTail->pNext = &stNode;
+        stNode.pNext = nullptr;
+        stNode.pPre = m_pTail;
+        m_pTail = &stNode;
+    }
+
+private:
+    struct _SNode
+    {
+        _SNode* pPre;
+        int nKey;
+        int nVal;
+        _SNode* pNext;
+
+        _SNode() : pPre(nullptr), nKey(-1), nVal(-1), pNext(nullptr) {}
+    };
+
+private:
+    std::unordered_map<int, _SNode> m_mapVal;
+    int m_nCap;
+    int m_nCount;
+    _SNode* m_pHead;
+    _SNode* m_pTail;
+};
+
+/*
+testcases:
+["LRUCache","put","put","get","put","get","put","get","get","get"]
+[[2],[1,1],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]]
+["LRUCache","put","put","get","get","put","get","get","get"]
+[[2],[2,1],[3,2],[3],[2],[4,3],[2],[3],[4]]
+["LRUCache","put","get","put","get","get"]
+[[1],[2,1],[2],[3,2],[2],[3]]
+*/
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache* obj = new LRUCache(capacity);
+ * int param_1 = obj->get(key);
+ * obj->put(key,value);
+ */
+```
+
+
 ## [654. 最大二叉树](https://leetcode-cn.com/problems/maximum-binary-tree/description/)
 给定一个不含重复元素的整数数组。一个以此数组构建的最大二叉树定义如下：<br>
 1.   二叉树的根是数组中的最大元素。<br>
