@@ -257,6 +257,90 @@ public:
 };
 ```
 
+## [23. 合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)
+给你一个链表数组，每个链表都已经按升序排列。
+请你将所有链表合并到一个升序链表中，返回合并后的链表。
+**示例：**
+```
+示例 1：
+输入：lists = [[1,4,5],[1,3,4],[2,6]]
+输出：[1,1,2,3,4,4,5,6]
+解释：链表数组如下：
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+将它们合并到一个有序链表中得到。
+1->1->2->3->4->4->5->6
+
+示例 2：
+输入：lists = []
+输出：[]
+
+示例 3：
+输入：lists = [[]]
+输出：[]
+```
+**提示：**
+```
+k == lists.length
+0 <= k <= 10^4
+0 <= lists[i].length <= 500
+-10^4 <= lists[i][j] <= 10^4
+lists[i] 按 升序 排列
+lists[i].length 的总和不超过 10^4
+```
+
+**Code:**
+```cpp
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+		ListNode* head = nullptr;
+		ListNode* cur = nullptr;
+		int index;
+        while ((index = getMinNode(lists)) != -1)
+        {
+            ListNode*& p = lists[index];
+            if (cur != nullptr) cur->next = p;
+            cur = p;
+            p = p->next;
+            if (head == nullptr) head = cur;
+        }
+
+        return head;
+    }
+
+	int getMinNode(vector<ListNode*>& lists)
+	{
+		int nMin = INT_MAX;
+		int index = -1;
+		for (int idx = 0; idx < lists.size(); ++idx)
+		{
+			if (lists[idx] != nullptr 
+				&& lists[idx]->val < nMin)
+			{
+				index = idx;
+				nMin = lists[idx]->val;
+			}
+		}
+
+		return index;
+	}
+};
+```
+
 ## [25. K 个一组翻转链表](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)
 给你一个链表，每 k 个节点一组进行翻转，请你返回翻转后的链表。
 k 是一个正整数，它的值小于或等于链表的长度。
@@ -961,6 +1045,123 @@ public:
             {
                 pParent->right = nullptr;
             }
+        }
+    }
+};
+```
+
+## [912. 排序数组](https://leetcode-cn.com/problems/sort-an-array/)
+给你一个整数数组 nums，请你将该数组升序排列。
+**示例：**
+```
+示例 1：
+输入：nums = [5,2,3,1]
+输出：[1,2,3,5]
+示例 2：
+输入：nums = [5,1,1,2,0,0]
+输出：[0,0,1,1,2,5]
+```
+**提示：**
+```
+1 <= nums.length <= 50000
+-50000 <= nums[i] <= 50000
+```
+
+**Code:**
+```cpp
+class Solution {
+public:
+    vector<int> sortArray(vector<int>& nums) {
+        srand((unsigned int)time(NULL));
+        //quick_sort(nums.data(), 0, nums.size()-1);
+        //shell_sort(nums.data(), nums.size());
+        static vector<int> s_vecNums;
+        s_vecNums.resize(nums.size(), 0);
+        mergeSort(nums.data(), s_vecNums.data(), 0, nums.size() - 1);
+        return nums;
+    }
+
+    void quick_sort(int* arr, int start, int end)
+    {
+        if (start >= end) return;
+        int l = start;
+        int r = end;
+        int t = rand() % (end - start + 1) + start;
+        swap(arr[t], arr[l]);
+        int base = arr[l];
+        while (l < r)
+        {
+            while (l < r)
+            {
+                if (arr[r] < base)
+                {
+                    arr[l++] = arr[r];
+                    break;
+                }
+
+                --r;
+            }
+
+            while (l < r)
+            {
+                if (arr[l] >= base)
+                {
+                    arr[r--] = arr[l];
+                    break;
+                }
+
+                ++l;
+            }
+        }
+
+        arr[l] = base;
+        quick_sort(arr, start, l-1);
+        quick_sort(arr, r+1, end);
+    }
+
+    void shell_sort(int* arr, int num)
+    {
+        for (int step = num / 2; step > 0; step /= 2)
+        {
+            for (int nIndex = step; nIndex < num; ++nIndex)
+            {
+                for (int nIdx = nIndex - step; nIdx >= 0; nIdx -= step)
+                {
+                    if (arr[nIdx] > arr[nIdx + step])
+                    {
+                        swap(arr[nIdx], arr[nIdx + step]);
+                    }
+                }
+            }
+        }
+    }
+
+    void mergeSort(int* arr, int* temp, int s, int e)
+    {
+        if (s == e) return;
+        int mid = (s + e) /2;
+        mergeSort(arr, temp, s, mid);
+        mergeSort(arr, temp, mid + 1, e);
+
+        int s1 = s, s2=mid+1, len = 0;
+        while (s1 <= mid && s2 <= e)
+        {
+            if (arr[s1] < arr[s2])
+            {
+                temp[len++] = arr[s1++];
+                continue;
+            }
+
+            temp[len++] = arr[s2++];
+        }
+
+        while (s1 <= mid)
+            temp[len++] = arr[s1++];
+        while (s2 <= e)
+            temp[len++] = arr[s2++];
+        for (int idx = 0; idx < len; ++idx)
+        {
+            arr[idx + s] = temp[idx];
         }
     }
 };
