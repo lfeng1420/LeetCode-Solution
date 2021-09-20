@@ -1,40 +1,9 @@
 # LeetCode-Solution
 记录自己提交且AC的代码<br>
-<!-- vscode-markdown-toc -->
-* 1. [[1. 两数之和](https://leetcode-cn.com/problems/two-sum/description/)](#1.https:leetcode-cn.comproblemstwo-sumdescription)
-* 2. [[2. 两数相加](https://leetcode-cn.com/problems/add-two-numbers/description/)](#2.https:leetcode-cn.comproblemsadd-two-numbersdescription)
-* 3. [[7. 反转整数](https://leetcode-cn.com/problems/reverse-integer/description/)](#7.https:leetcode-cn.comproblemsreverse-integerdescription)
-* 4. [[8. 字符串转整数 (atoi)](https://leetcode-cn.com/problems/string-to-integer-atoi/description/)](#8.atoihttps:leetcode-cn.comproblemsstring-to-integer-atoidescription)
-* 5. [[23. 合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)](#23.Khttps:leetcode-cn.comproblemsmerge-k-sorted-lists)
-* 6. [[25. K 个一组翻转链表](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)](#25.Khttps:leetcode-cn.comproblemsreverse-nodes-in-k-group)
-* 7. [[33. 搜索旋转排序数组](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)](#33.https:leetcode-cn.comproblemssearch-in-rotated-sorted-array)
-* 8. [[52. N皇后 II](https://leetcode-cn.com/problems/n-queens-ii/description/)](#52.NIIhttps:leetcode-cn.comproblemsn-queens-iidescription)
-* 9. [[146. LRU 缓存机制](https://leetcode-cn.com/problems/lru-cache/)](#146.LRUhttps:leetcode-cn.comproblemslru-cache)
-* 10. [[206. 反转链表](https://leetcode-cn.com/problems/reverse-linked-list/)](#206.https:leetcode-cn.comproblemsreverse-linked-list)
-* 11. [[215. 数组中的第K个最大元素](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)](#215.Khttps:leetcode-cn.comproblemskth-largest-element-in-an-array)
-* 12. [[654. 最大二叉树](https://leetcode-cn.com/problems/maximum-binary-tree/description/)](#654.https:leetcode-cn.comproblemsmaximum-binary-treedescription)
-* 13. [[657. 判断路线成圈](https://leetcode-cn.com/problems/judge-route-circle/description/)](#657.https:leetcode-cn.comproblemsjudge-route-circledescription)
-* 14. [[771. 宝石与石头](https://leetcode-cn.com/problems/jewels-and-stones/description/)](#771.https:leetcode-cn.comproblemsjewels-and-stonesdescription)
-* 15. [[807. 保持城市天际线](https://leetcode-cn.com/problems/max-increase-to-keep-city-skyline/description/)](#807.https:leetcode-cn.comproblemsmax-increase-to-keep-city-skylinedescription)
-* 16. [[814. 二叉树剪枝](https://leetcode-cn.com/problems/binary-tree-pruning/description/)](#814.https:leetcode-cn.comproblemsbinary-tree-pruningdescription)
-* 17. [[912. 排序数组](https://leetcode-cn.com/problems/sort-an-array/)](#912.https:leetcode-cn.comproblemssort-an-array)
+<br>
 
-<!-- vscode-markdown-toc-config
-	numbering=true
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc --><br>
-
-##  1. <a name='1.https:leetcode-cn.comproblemstwo-sumdescription'></a>[1. 两数之和](https://leetcode-cn.com/problems/two-sum/description/)
-给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。<br>
-你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。<br>
-**示例:**
-```
-给定 nums = [2, 7, 11, 15], target = 9
-
-因为 nums[0] + nums[1] = 2 + 7 = 9
-所以返回 [0, 1]
-```
+## 1. 两数之和
+[题目链接](https://leetcode-cn.com/problems/two-sum)
 **Code:**
 ```cpp
 class Solution {
@@ -73,15 +42,8 @@ public:
 };
 ```
 
-##  2. <a name='2.https:leetcode-cn.comproblemsadd-two-numbersdescription'></a>[2. 两数相加](https://leetcode-cn.com/problems/add-two-numbers/description/)
-给定两个非空链表来表示两个非负整数。位数按照逆序方式存储，它们的每个节点只存储单个数字。将两数相加返回一个新的链表。<br>
-你可以假设除了数字 0 之外，这两个数字都不会以零开头。<br>
-**示例:**
-```
-输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
-输出：7 -> 0 -> 8
-原因：342 + 465 = 807
-```
+## 2. 两数相加
+[题目链接](https://leetcode-cn.com/problems/add-two-numbers)
 **Code:**
 ```cpp
 /**
@@ -132,26 +94,8 @@ public:
 };
 ```
 
-##  3. <a name='7.https:leetcode-cn.comproblemsreverse-integerdescription'></a>[7. 反转整数](https://leetcode-cn.com/problems/reverse-integer/description/)
-给定一个 32 位有符号整数，将整数中的数字进行反转。<br>
-**示例 1:**
-```
-输入: 123
-输出: 321
-```
-**示例 2:**
-```
-输入: -123
-输出: -321
-```
-**示例 3:**
-```
-输入: 120
-输出: 21
-```
-**说明：**<br>
-假设我们的环境只能存储`32`位有符号整数，其数值范围是`[-2^31,  2^31 - 1]`。根据这个假设，如果反转后的整数溢出，则返回 0。<br>
-
+## 7. 反转整数
+[题目链接](https://leetcode-cn.com/problems/reverse-integer)
 **Code:**
 ```cpp
 class Solution {
@@ -178,48 +122,8 @@ public:
 };
 ```
 
-##  4. <a name='8.atoihttps:leetcode-cn.comproblemsstring-to-integer-atoidescription'></a>[8. 字符串转整数 (atoi)](https://leetcode-cn.com/problems/string-to-integer-atoi/description/)
-实现`atoi`，将字符串转为整数。<br>
-在找到第一个非空字符之前，需要移除掉字符串中的空格字符。如果第一个非空字符是正号或负号，选取该符号，并将其与后面尽可能多的连续的数字组合起来，这部分字符即为整数的值。如果第一个非空字符是数字，则直接将其与之后连续的数字字符组合起来，形成整数。<br>
-字符串可以在形成整数的字符后面包括多余的字符，这些字符可以被忽略，它们对于函数没有影响。<br>
-当字符串中的第一个非空字符序列不是个有效的整数；或字符串为空；或字符串仅包含空白字符时，则不进行转换。<br>
-若函数不能执行有效的转换，返回`0`。<br>
-**说明：**<br>
-假设我们的环境只能存储`32`位有符号整数，其数值范围是`[-2^31,  2^31 - 1]`。如果数值超过可表示的范围，则返回`INT_MAX (2^31 - 1)`或`INT_MIN (-2^31)`。
-
-**示例 1:**
-```
-输入: "42"
-输出: 42
-```
-**示例 2:**
-```
-输入: "   -42"
-输出: -42
-解释: 第一个非空白字符为 '-', 它是一个负号。
-     我们尽可能将负号与后面所有连续出现的数字组合起来，最后得到 -42 。
-```
-**示例 3:**
-```
-输入: "4193 with words"
-输出: 4193
-解释: 转换截止于数字 '3' ，因为它的下一个字符不为数字。
-```
-**示例 4:**
-```
-输入: "words and 987"
-输出: 0
-解释: 第一个非空字符是 'w', 但它不是数字或正、负号。
-     因此无法执行有效的转换。
-```
-**示例 5:**
-```
-输入: "-91283472332"
-输出: -2147483648
-解释: 数字 "-91283472332" 超过 32 位有符号整数范围。 
-     因此返回 INT_MIN (−231) 。
-```
-
+## 8. 字符串转整数 (atoi)
+[题目链接](https://leetcode-cn.com/problems/string-to-integer-atoi)
 **Code:**
 ```cpp
 class Solution {
@@ -280,41 +184,8 @@ public:
 };
 ```
 
-##  5. <a name='23.Khttps:leetcode-cn.comproblemsmerge-k-sorted-lists'></a>[23. 合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)
-给你一个链表数组，每个链表都已经按升序排列。
-请你将所有链表合并到一个升序链表中，返回合并后的链表。
-**示例：**
-```
-示例 1：
-输入：lists = [[1,4,5],[1,3,4],[2,6]]
-输出：[1,1,2,3,4,4,5,6]
-解释：链表数组如下：
-[
-  1->4->5,
-  1->3->4,
-  2->6
-]
-将它们合并到一个有序链表中得到。
-1->1->2->3->4->4->5->6
-
-示例 2：
-输入：lists = []
-输出：[]
-
-示例 3：
-输入：lists = [[]]
-输出：[]
-```
-**提示：**
-```
-k == lists.length
-0 <= k <= 10^4
-0 <= lists[i].length <= 500
--10^4 <= lists[i][j] <= 10^4
-lists[i] 按 升序 排列
-lists[i].length 的总和不超过 10^4
-```
-
+## 23. 合并K个升序链表
+[题目链接](https://leetcode-cn.com/problems/merge-k-sorted-lists/)
 **Code:**
 ```cpp
 /**
@@ -364,32 +235,8 @@ public:
 };
 ```
 
-##  6. <a name='25.Khttps:leetcode-cn.comproblemsreverse-nodes-in-k-group'></a>[25. K 个一组翻转链表](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)
-给你一个链表，每 k 个节点一组进行翻转，请你返回翻转后的链表。
-k 是一个正整数，它的值小于或等于链表的长度。
-如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。
-进阶：
-你可以设计一个只使用常数额外空间的算法来解决此问题吗？
-你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。
-**示例：**
-```
-输入：head = [1,2,3,4,5], k = 2
-输出：[2,1,4,3,5]
-输入：head = [1,2,3,4,5], k = 3
-输出：[3,2,1,4,5]
-输入：head = [1,2,3,4,5], k = 1
-输出：[1,2,3,4,5]
-输入：head = [1], k = 1
-输出：[1]
-```
-**提示：**
-```
-列表中节点的数量在范围 sz 内
-1 <= sz <= 5000
-0 <= Node.val <= 1000
-1 <= k <= sz
-```
-
+## 25. K 个一组翻转链表
+[题目链接](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)
 **Code:**
 ```cpp
 class Solution {
@@ -442,34 +289,8 @@ public:
 };
 ```
 
-##  7. <a name='33.https:leetcode-cn.comproblemssearch-in-rotated-sorted-array'></a>[33. 搜索旋转排序数组](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)
-整数数组 nums 按升序排列，数组中的值 互不相同 。
-在传递给函数之前，nums 在预先未知的某个下标 k（0 <= k < nums.length）上进行了 旋转，使数组变为 [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]]（下标 从 0 开始 计数）。例如， [0,1,2,4,5,6,7] 在下标 3 处经旋转后可能变为 [4,5,6,7,0,1,2] 。
-给你 旋转后 的数组 nums 和一个整数 target ，如果 nums 中存在这个目标值 target ，则返回它的下标，否则返回 -1 。
-**示例：**
-```
-示例 1：
-输入：nums = [4,5,6,7,0,1,2], target = 0
-输出：4
-
-示例 2：
-输入：nums = [4,5,6,7,0,1,2], target = 3
-输出：-1
-
-示例 3：
-输入：nums = [1], target = 0
-输出：-1
-```
-
-**提示：**
-```
-1 <= nums.length <= 5000
--10^4 <= nums[i] <= 10^4
-nums 中的每个值都 独一无二
-题目数据保证 nums 在预先未知的某个下标上进行了旋转
--10^4 <= target <= 10^4
-```
-
+## 33. 搜索旋转排序数组
+[题目链接](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)
 **Code:**
 ```cpp
 class Solution {
@@ -506,28 +327,8 @@ public:
 ```
 
 
-##  8. <a name='52.NIIhttps:leetcode-cn.comproblemsn-queens-iidescription'></a>[52. N皇后 II](https://leetcode-cn.com/problems/n-queens-ii/description/)
-n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。<br>
-![上图为 8 皇后问题的一种解法。](images/52_8_queens.png)<br>
-给定一个整数 n，返回 n 皇后不同的解决方案的数量。<br>
-**示例:**
-```
-输入: 4
-输出: 2
-解释: 4 皇后问题存在如下两个不同的解法。
-[
- [".Q..",  // 解法 1
-  "...Q",
-  "Q...",
-  "..Q."],
-
- ["..Q.",  // 解法 2
-  "Q...",
-  "...Q",
-  ".Q.."]
-]
-```
-
+## 52. N皇后 II
+[题目链接](https://leetcode-cn.com/problems/n-queens-ii)
 **Code:**
 ```cpp
 class Solution {
@@ -581,42 +382,8 @@ public:
 };
 ```
 
-##  9. <a name='146.LRUhttps:leetcode-cn.comproblemslru-cache'></a>[146. LRU 缓存机制](https://leetcode-cn.com/problems/lru-cache/)
-运用你所掌握的数据结构，设计和实现一个`LRU (最近最少使用) 缓存机制`。
-实现 `LRUCache` 类：
-* `LRUCache(int capacity)` 以正整数作为容量 `capacity` 初始化 `LRU` 缓存
-* `int get(int key)` 如果关键字 `key` 存在于缓存中，则返回关键字的值，否则返回 `-1` 。
-* `void put(int key, int value)` 如果关键字已经存在，则变更其数据值；如果关键字不存在，则插入该组「关键字-值」。当缓存容量达到上限时，它应该在写入新数据之前删除最久未使用的数据值，从而为新的数据值留出空间。
-
-**示例：**
-```
-输入
-["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
-[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
-输出
-[null, null, null, 1, null, -1, null, -1, 3, 4]
-
-解释
-LRUCache lRUCache = new LRUCache(2);
-lRUCache.put(1, 1); // 缓存是 {1=1}
-lRUCache.put(2, 2); // 缓存是 {1=1, 2=2}
-lRUCache.get(1);    // 返回 1
-lRUCache.put(3, 3); // 该操作会使得关键字 2 作废，缓存是 {1=1, 3=3}
-lRUCache.get(2);    // 返回 -1 (未找到)
-lRUCache.put(4, 4); // 该操作会使得关键字 1 作废，缓存是 {4=4, 3=3}
-lRUCache.get(1);    // 返回 -1 (未找到)
-lRUCache.get(3);    // 返回 3
-lRUCache.get(4);    // 返回 4
-```
-
-**提示：**
-```
-1 <= capacity <= 3000
-0 <= key <= 10000
-0 <= value <= 10^5
-最多调用 2 * 10^5 次 get 和 put
-```
-
+## 146. LRU 缓存机制
+[题目链接](https://leetcode-cn.com/problems/lru-cache/)
 **Code:**
 ```cpp
 class LRUCache {
@@ -750,24 +517,8 @@ testcases:
  */
 ```
 
-##  10. <a name='206.https:leetcode-cn.comproblemsreverse-linked-list'></a>[206. 反转链表](https://leetcode-cn.com/problems/reverse-linked-list/)
-给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。
-```
-输入：head = [1,2,3,4,5]
-输出：[5,4,3,2,1]
-输入：head = [1,2]
-输出：[2,1]
-输入：head = []
-输出：[]
-```
-
-**提示：**
-```
-提示：
-链表中节点的数目范围是 [0, 5000]
--5000 <= Node.val <= 5000
-```
-
+## 206. 反转链表
+[题目链接](https://leetcode-cn.com/problems/reverse-linked-list/)
 **Code:**
 ```cpp
 /**
@@ -798,7 +549,8 @@ public:
 };
 ```
 
-##  11. <a name='215.Khttps:leetcode-cn.comproblemskth-largest-element-in-an-array'></a>[215. 数组中的第K个最大元素](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
+## 215. 数组中的第K个最大元素
+[题目链接](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
 给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
 请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
 **示例：**
@@ -807,7 +559,7 @@ public:
 输入: [3,2,1,5,6,4] 和 k = 2
 输出: 5
 
-示例 2:
+示例 2:
 输入: [3,2,3,1,2,4,5,5,6] 和 k = 4
 输出: 4
 ```
@@ -830,29 +582,8 @@ public:
 ```
 
 
-##  12. <a name='654.https:leetcode-cn.comproblemsmaximum-binary-treedescription'></a>[654. 最大二叉树](https://leetcode-cn.com/problems/maximum-binary-tree/description/)
-给定一个不含重复元素的整数数组。一个以此数组构建的最大二叉树定义如下：<br>
-1.   二叉树的根是数组中的最大元素。<br>
-2.   左子树是通过数组中最大值左边部分构造出的最大二叉树。<br>
-3.   右子树是通过数组中最大值右边部分构造出的最大二叉树。<br>
-通过给定的数组构建最大二叉树，并且输出这个树的根节点。<br>
-
-**Example 1:**
-```
-输入: [3,2,1,6,0,5]
-输入: 返回下面这棵树的根节点：
-
-      6
-    /   \
-   3     5
-    \    / 
-     2  0   
-       \
-        1
-```
-注意:<br>
-1.给定的数组的大小在 [1, 1000] 之间。<br>
-
+## 654. 最大二叉树
+[题目链接](https://leetcode-cn.com/problems/maximum-binary-tree)
 **Code:**
 ```cpp
 /**
@@ -909,20 +640,8 @@ public:
 };
 ```
 
-##  13. <a name='657.https:leetcode-cn.comproblemsjudge-route-circledescription'></a>[657. 判断路线成圈](https://leetcode-cn.com/problems/judge-route-circle/description/)
-初始位置 (0, 0) 处有一个机器人。给出它的一系列动作，判断这个机器人的移动路线是否形成一个圆圈，换言之就是判断它是否会移回到原来的位置。<br>
-移动顺序由一个字符串表示。每一个动作都是由一个字符来表示的。机器人有效的动作有 R（右），L（左），U（上）和 D（下）。输出应为 true 或 false，表示机器人移动路线是否成圈。<br>
-**示例 1:**
-```
-输入: "UD"
-输出: true
-```
-**示例 2:**
-```
-输入: "LL"
-输出: false
-```
-
+## 657. 判断路线成圈
+[题目链接](https://leetcode-cn.com/problems/judge-route-circle)
 **Code:**
 ```cpp
 class Solution {
@@ -955,23 +674,8 @@ public:
 };
 ```
 
-##  14. <a name='771.https:leetcode-cn.comproblemsjewels-and-stonesdescription'></a>[771. 宝石与石头](https://leetcode-cn.com/problems/jewels-and-stones/description/)
-给定字符串`J`代表石头中宝石的类型，和字符串`S`代表你拥有的石头。`S`中每个字符代表了一种你拥有的石头的类型，你想知道你拥有的石头中有多少是宝石。<br>
-`J`中的字母不重复，`J`和`S`中的所有字符都是字母。字母区分大小写，因此`"a"`和`"A"`是不同类型的石头。<br>
-**示例 1:**
-```
-输入: J = "aA", S = "aAAbbbb"
-输出: 3
-```
-**示例 2:**
-```
-输入: J = "z", S = "ZZ"
-输出: 0
-```
-注意:
-*   `S`和`J`最多含有50个字母。
-*   `J`中的字符不重复。
-
+## 771. 宝石与石头
+[题目链接](https://leetcode-cn.com/problems/jewels-and-stones)
 **Code:**
 ```cpp
 class Solution {
@@ -994,37 +698,8 @@ public:
 };
 ```
 
-##  15. <a name='807.https:leetcode-cn.comproblemsmax-increase-to-keep-city-skylinedescription'></a>[807. 保持城市天际线](https://leetcode-cn.com/problems/max-increase-to-keep-city-skyline/description/)
-在二维数组`grid`中，`grid[i][j]`代表位于某处的建筑物的高度。 我们被允许增加任何数量（不同建筑物的数量可能不同）的建筑物的高度。 高度 0 也被认为是建筑物。
-最后，从新数组的所有四个方向（即顶部，底部，左侧和右侧）观看的“天际线”必须与原始数组的天际线相同。 城市的天际线是从远处观看时，由所有建筑物形成的矩形的外部轮廓。 请看下面的例子。<br>
-建筑物高度可以增加的最大总和是多少？<br>
-```
-例子：
-输入： grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]
-输出： 35
-解释： 
-The grid is:
-[ [3, 0, 8, 4], 
-  [2, 4, 5, 7],
-  [9, 2, 6, 3],
-  [0, 3, 1, 0] ]
-
-从数组竖直方向（即顶部，底部）看“天际线”是：[9, 4, 8, 7]
-从水平水平方向（即左侧，右侧）看“天际线”是：[8, 7, 9, 3]
-
-在不影响天际线的情况下对建筑物进行增高后，新数组如下：
-
-gridNew = [ [8, 4, 8, 7],
-            [7, 4, 7, 7],
-            [9, 4, 8, 7],
-            [3, 3, 3, 3] ]
-```
-
-**说明:**<br>
-*   `1 < grid.length = grid[0].length <= 50`。
-*   `grid[i][j]` 的高度范围是：`[0, 100]`。
-*   一座建筑物占据一个`grid[i][j]`：换言之，它们是`1 x 1 x grid[i][j]`的长方体。<br>
-
+## 807. 保持城市天际线
+[题目链接](https://leetcode-cn.com/problems/max-increase-to-keep-city-skyline)
 **Code:**
 ```cpp
 class Solution {
@@ -1058,37 +733,8 @@ public:
 };
 ```
 
-##  16. <a name='814.https:leetcode-cn.comproblemsbinary-tree-pruningdescription'></a>[814. 二叉树剪枝](https://leetcode-cn.com/problems/binary-tree-pruning/description/)
-
-给定二叉树根结点`root`，此外树的每个结点的值要么是`0`，要么是`1`。<br>
-返回移除了所有不包含`1`的子树的原二叉树。<br>
-( 节点`X`的子树为`X`本身，以及所有`X`的后代。)<br>
-**示例1:**
-```
-输入: [1,null,0,0,1]
-输出: [1,null,0,null,1]
- 
-解释: 
-只有红色节点满足条件“所有不包含 1 的子树”。
-右图为返回的答案。
-```
-![](images/814_0.png)<br>
-**示例2:**
-```
-输入: [1,0,1,0,0,0,1]
-输出: [1,null,1,null,1]
-```
-![](images/814_1.png)<br>
-**示例3:**
-```
-输入: [1,1,0,1,1,0,1,0]
-输出: [1,1,0,1,1,null,1]
-```
-![](images/814_2.png)<br>
-说明:
-给定的二叉树最多有`100`个节点。<br>
-每个节点的值只会为`0`或 `1`。<br>
-
+## 814. 二叉树剪枝
+[题目链接](https://leetcode-cn.com/problems/binary-tree-pruning)
 **Code:**
 ```cpp
 /**
@@ -1137,23 +783,8 @@ public:
 };
 ```
 
-##  17. <a name='912.https:leetcode-cn.comproblemssort-an-array'></a>[912. 排序数组](https://leetcode-cn.com/problems/sort-an-array/)
-给你一个整数数组 nums，请你将该数组升序排列。
-**示例：**
-```
-示例 1：
-输入：nums = [5,2,3,1]
-输出：[1,2,3,5]
-示例 2：
-输入：nums = [5,1,1,2,0,0]
-输出：[0,0,1,1,2,5]
-```
-**提示：**
-```
-1 <= nums.length <= 50000
--50000 <= nums[i] <= 50000
-```
-
+## 912. 排序数组
+[题目链接](https://leetcode-cn.com/problems/sort-an-array/)
 **Code:**
 ```cpp
 class Solution {
