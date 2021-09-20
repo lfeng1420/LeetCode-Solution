@@ -1,8 +1,31 @@
 # LeetCode-Solution
 记录自己提交且AC的代码<br>
-<br>
+<!-- vscode-markdown-toc -->
+* [1. 两数之和](#1.-两数之和)
+* [2. 两数相加](#2.-两数相加)
+* [7. 反转整数](#7.-反转整数)
+* [8. 字符串转整数 (atoi)](#8.-字符串转整数-(atoi))
+* [23. 合并K个升序链表](#23.-合并k个升序链表)
+* [25. K 个一组翻转链表](#25.-k-个一组翻转链表)
+* [33. 搜索旋转排序数组](#33.-搜索旋转排序数组)
+* [52. N皇后 II](#52.-n皇后-ii)
+* [146. LRU 缓存机制](#146.-lru-缓存机制)
+* [206. 反转链表](#206.-反转链表)
+* [215. 数组中的第K个最大元素](#215.-数组中的第k个最大元素)
+* [654. 最大二叉树](#654.-最大二叉树)
+* [657. 判断路线成圈](#657.-判断路线成圈)
+* [771. 宝石与石头](#771.-宝石与石头)
+* [807. 保持城市天际线](#807.-保持城市天际线)
+* [814. 二叉树剪枝](#814.-二叉树剪枝)
+* [912. 排序数组](#912.-排序数组)
 
-## 1. 两数之和
+<!-- vscode-markdown-toc-config
+	numbering=false
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc --><br>
+
+## <a name='1.-两数之和'></a>1. 两数之和
 [题目链接](https://leetcode-cn.com/problems/two-sum)
 
 **Code:**
@@ -43,7 +66,7 @@ public:
 };
 ```
 
-## 2. 两数相加
+## <a name='2.-两数相加'></a>2. 两数相加
 [题目链接](https://leetcode-cn.com/problems/add-two-numbers)
 
 **Code:**
@@ -96,7 +119,7 @@ public:
 };
 ```
 
-## 7. 反转整数
+## <a name='7.-反转整数'></a>7. 反转整数
 [题目链接](https://leetcode-cn.com/problems/reverse-integer)
 
 **Code:**
@@ -125,7 +148,7 @@ public:
 };
 ```
 
-## 8. 字符串转整数 (atoi)
+## <a name='8.-字符串转整数-(atoi)'></a>8. 字符串转整数 (atoi)
 [题目链接](https://leetcode-cn.com/problems/string-to-integer-atoi)
 
 **Code:**
@@ -188,7 +211,7 @@ public:
 };
 ```
 
-## 23. 合并K个升序链表
+## <a name='23.-合并k个升序链表'></a>23. 合并K个升序链表
 [题目链接](https://leetcode-cn.com/problems/merge-k-sorted-lists/)
 
 **Code:**
@@ -240,7 +263,7 @@ public:
 };
 ```
 
-## 25. K 个一组翻转链表
+## <a name='25.-k-个一组翻转链表'></a>25. K 个一组翻转链表
 [题目链接](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)
 
 **Code:**
@@ -295,7 +318,7 @@ public:
 };
 ```
 
-## 33. 搜索旋转排序数组
+## <a name='33.-搜索旋转排序数组'></a>33. 搜索旋转排序数组
 [题目链接](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)
 
 **Code:**
@@ -334,7 +357,7 @@ public:
 ```
 
 
-## 52. N皇后 II
+## <a name='52.-n皇后-ii'></a>52. N皇后 II
 [题目链接](https://leetcode-cn.com/problems/n-queens-ii)
 
 **Code:**
@@ -390,7 +413,7 @@ public:
 };
 ```
 
-## 146. LRU 缓存机制
+## <a name='146.-lru-缓存机制'></a>146. LRU 缓存机制
 [题目链接](https://leetcode-cn.com/problems/lru-cache/)
 
 **Code:**
@@ -526,7 +549,7 @@ testcases:
  */
 ```
 
-## 206. 反转链表
+## <a name='206.-反转链表'></a>206. 反转链表
 [题目链接](https://leetcode-cn.com/problems/reverse-linked-list/)
 
 **Code:**
@@ -559,7 +582,7 @@ public:
 };
 ```
 
-## 215. 数组中的第K个最大元素
+## <a name='215.-数组中的第k个最大元素'></a>215. 数组中的第K个最大元素
 [题目链接](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
 
 给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
@@ -593,7 +616,7 @@ public:
 ```
 
 
-## 654. 最大二叉树
+## <a name='654.-最大二叉树'></a>654. 最大二叉树
 [题目链接](https://leetcode-cn.com/problems/maximum-binary-tree)
 
 **Code:**
@@ -652,7 +675,7 @@ public:
 };
 ```
 
-## 657. 判断路线成圈
+## <a name='657.-判断路线成圈'></a>657. 判断路线成圈
 [题目链接](https://leetcode-cn.com/problems/judge-route-circle)
 
 **Code:**
@@ -687,7 +710,7 @@ public:
 };
 ```
 
-## 771. 宝石与石头
+## <a name='771.-宝石与石头'></a>771. 宝石与石头
 [题目链接](https://leetcode-cn.com/problems/jewels-and-stones)
 
 **Code:**
@@ -712,7 +735,7 @@ public:
 };
 ```
 
-## 807. 保持城市天际线
+## <a name='807.-保持城市天际线'></a>807. 保持城市天际线
 [题目链接](https://leetcode-cn.com/problems/max-increase-to-keep-city-skyline)
 
 **Code:**
@@ -748,7 +771,7 @@ public:
 };
 ```
 
-## 814. 二叉树剪枝
+## <a name='814.-二叉树剪枝'></a>814. 二叉树剪枝
 [题目链接](https://leetcode-cn.com/problems/binary-tree-pruning)
 
 **Code:**
@@ -799,7 +822,7 @@ public:
 };
 ```
 
-## 912. 排序数组
+## <a name='912.-排序数组'></a>912. 排序数组
 [题目链接](https://leetcode-cn.com/problems/sort-an-array/)
 
 **Code:**
