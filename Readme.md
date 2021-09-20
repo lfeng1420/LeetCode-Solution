@@ -6,7 +6,7 @@
 给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。<br>
 你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。<br>
 **示例:**
-```bash
+```
 给定 nums = [2, 7, 11, 15], target = 9
 
 因为 nums[0] + nums[1] = 2 + 7 = 9
@@ -54,7 +54,7 @@ public:
 给定两个非空链表来表示两个非负整数。位数按照逆序方式存储，它们的每个节点只存储单个数字。将两数相加返回一个新的链表。<br>
 你可以假设除了数字 0 之外，这两个数字都不会以零开头。<br>
 **示例:**
-```bash
+```
 输入：(2 -> 4 -> 3) + (5 -> 6 -> 4)
 输出：7 -> 0 -> 8
 原因：342 + 465 = 807
@@ -93,7 +93,7 @@ public:
         ListNode* pRemain = (l1 != nullptr) ? l1 : l2;
         for (; pRemain != nullptr; pRemain = pRemain->next)
         {
-		    int nVal = (pRemain->val + nTemp) % 10;
+            int nVal = (pRemain->val + nTemp) % 10;
             nTemp = (pRemain->val + nTemp) / 10;
             pCur->next = new ListNode(nVal);
             pCur = pCur->next;
@@ -112,17 +112,17 @@ public:
 ## [7. 反转整数](https://leetcode-cn.com/problems/reverse-integer/description/)
 给定一个 32 位有符号整数，将整数中的数字进行反转。<br>
 **示例 1:**
-```bash
+```
 输入: 123
 输出: 321
 ```
 **示例 2:**
-```bash
+```
 输入: -123
 输出: -321
 ```
 **示例 3:**
-```bash
+```
 输入: 120
 输出: 21
 ```
@@ -165,32 +165,32 @@ public:
 假设我们的环境只能存储`32`位有符号整数，其数值范围是`[-2^31,  2^31 - 1]`。如果数值超过可表示的范围，则返回`INT_MAX (2^31 - 1)`或`INT_MIN (-2^31)`。
 
 **示例 1:**
-```bash
+```
 输入: "42"
 输出: 42
 ```
 **示例 2:**
-```bash
+```
 输入: "   -42"
 输出: -42
 解释: 第一个非空白字符为 '-', 它是一个负号。
      我们尽可能将负号与后面所有连续出现的数字组合起来，最后得到 -42 。
 ```
 **示例 3:**
-```bash
+```
 输入: "4193 with words"
 输出: 4193
 解释: 转换截止于数字 '3' ，因为它的下一个字符不为数字。
 ```
 **示例 4:**
-```bash
+```
 输入: "words and 987"
 输出: 0
 解释: 第一个非空字符是 'w', 但它不是数字或正、负号。
      因此无法执行有效的转换。
 ```
 **示例 5:**
-```bash
+```
 输入: "-91283472332"
 输出: -2147483648
 解释: 数字 "-91283472332" 超过 32 位有符号整数范围。 
@@ -307,9 +307,9 @@ lists[i].length 的总和不超过 10^4
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-		ListNode* head = nullptr;
-		ListNode* cur = nullptr;
-		int index;
+        ListNode* head = nullptr;
+        ListNode* cur = nullptr;
+        int index;
         while ((index = getMinNode(lists)) != -1)
         {
             ListNode*& p = lists[index];
@@ -322,22 +322,22 @@ public:
         return head;
     }
 
-	int getMinNode(vector<ListNode*>& lists)
-	{
-		int nMin = INT_MAX;
-		int index = -1;
-		for (int idx = 0; idx < lists.size(); ++idx)
-		{
-			if (lists[idx] != nullptr 
-				&& lists[idx]->val < nMin)
-			{
-				index = idx;
-				nMin = lists[idx]->val;
-			}
-		}
+    int getMinNode(vector<ListNode*>& lists)
+    {
+        int nMin = INT_MAX;
+        int index = -1;
+        for (int idx = 0; idx < lists.size(); ++idx)
+        {
+            if (lists[idx] != nullptr 
+                && lists[idx]->val < nMin)
+            {
+                index = idx;
+                nMin = lists[idx]->val;
+            }
+        }
 
-		return index;
-	}
+        return index;
+    }
 };
 ```
 
@@ -371,60 +371,124 @@ k 是一个正整数，它的值小于或等于链表的长度。
 ```cpp
 class Solution {
 public:
-	ListNode* reverseKGroup(ListNode* head, int k) {
-		ListNode* rhead = nullptr;
-		ListNode* first = nullptr;
-		ListNode* llast = nullptr;
-		for (int index = 1; head != nullptr; ++index)
-		{
-			if (first == nullptr)
-			{
-				first = head;
-			}
-			if (index != k)
-			{
-				head = head->next;
-				continue;
-			}
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        ListNode* rhead = nullptr;
+        ListNode* first = nullptr;
+        ListNode* llast = nullptr;
+        for (int index = 1; head != nullptr; ++index)
+        {
+            if (first == nullptr)
+            {
+                first = head;
+            }
+            if (index != k)
+            {
+                head = head->next;
+                continue;
+            }
 
-			ListNode* pre = nullptr;
-			ListNode* cur = first;
-			while (cur != head)
-			{
-				ListNode* next = cur->next;
-				cur->next = pre;
-				pre = cur;
-				cur = next;
-			}
+            ListNode* pre = nullptr;
+            ListNode* cur = first;
+            while (cur != head)
+            {
+                ListNode* next = cur->next;
+                cur->next = pre;
+                pre = cur;
+                cur = next;
+            }
 
-			ListNode* next = head->next;
-			head->next = pre;
-			if (rhead == nullptr)
-			{
-				rhead = head;
-			}
+            ListNode* next = head->next;
+            head->next = pre;
+            if (rhead == nullptr)
+            {
+                rhead = head;
+            }
 
-			if (llast != nullptr)
-				llast->next = head;
-			llast = first;
-			index = 0;
-			first = nullptr;
-			head = next;
-		}
+            if (llast != nullptr)
+                llast->next = head;
+            llast = first;
+            index = 0;
+            first = nullptr;
+            head = next;
+        }
 
-		if (llast != nullptr)
-			llast->next = first;
-		return rhead;
-	}
+        if (llast != nullptr)
+            llast->next = first;
+        return rhead;
+    }
 };
 ```
+
+## [33. 搜索旋转排序数组](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)
+整数数组 nums 按升序排列，数组中的值 互不相同 。
+在传递给函数之前，nums 在预先未知的某个下标 k（0 <= k < nums.length）上进行了 旋转，使数组变为 [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]]（下标 从 0 开始 计数）。例如， [0,1,2,4,5,6,7] 在下标 3 处经旋转后可能变为 [4,5,6,7,0,1,2] 。
+给你 旋转后 的数组 nums 和一个整数 target ，如果 nums 中存在这个目标值 target ，则返回它的下标，否则返回 -1 。
+**示例：**
+```
+示例 1：
+输入：nums = [4,5,6,7,0,1,2], target = 0
+输出：4
+
+示例 2：
+输入：nums = [4,5,6,7,0,1,2], target = 3
+输出：-1
+
+示例 3：
+输入：nums = [1], target = 0
+输出：-1
+```
+
+**提示：**
+```
+1 <= nums.length <= 5000
+-10^4 <= nums[i] <= 10^4
+nums 中的每个值都 独一无二
+题目数据保证 nums 在预先未知的某个下标上进行了旋转
+-10^4 <= target <= 10^4
+```
+
+**Code:**
+```cpp
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int last = nums.size() - 1;
+        if (target == nums[0]) return 0;
+        if (target == nums[last]) return last;
+        int k = getK(nums, 0, last);
+        if (k == -1) return -1;
+        bool bGT = (target > nums[0]);
+        return binarySearch(nums.data(), target, bGT ? 0 : k + 1, bGT ? k : nums.size() - 1);
+    }
+
+    int getK(vector<int>& nums, int s, int e)
+    {
+        if (s == e) return s;
+        int m = (s + e) / 2;
+        if (nums[m] >= nums[s]) return (nums[m] < nums[e]) ? getK(nums, min(m + 1, e), e) : getK(nums, m, max(e - 1, m));
+        else if (nums[m] < nums[e]) return getK(nums, s, max(m - 1, 0));
+        return -1;
+    }
+
+    int binarySearch(int* arr, int target, int s, int e)
+    {
+        if (s > e) return -1;
+        int m = (s + e) /2;
+        const int& val = arr[m];
+        if (target == val) return m;
+        return (target > val) ? binarySearch(arr, target, m + 1, e) : 
+            binarySearch(arr, target, s, m - 1);
+    }
+};
+```
+
 
 ## [52. N皇后 II](https://leetcode-cn.com/problems/n-queens-ii/description/)
 n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。<br>
 ![上图为 8 皇后问题的一种解法。](images/52_8_queens.png)<br>
 给定一个整数 n，返回 n 皇后不同的解决方案的数量。<br>
 **示例:**
-```bash
+```
 输入: 4
 输出: 2
 解释: 4 皇后问题存在如下两个不同的解法。
@@ -583,29 +647,29 @@ public:
 
 private:
     struct _SNode;
-	void removeNode(_SNode& stNode)
-	{
-		if (stNode.pPre != nullptr)
-		{
-			stNode.pPre->pNext = stNode.pNext;
-		}
-		if (stNode.pNext != nullptr)
-		{
-			stNode.pNext->pPre = stNode.pPre;
-		}
+    void removeNode(_SNode& stNode)
+    {
+        if (stNode.pPre != nullptr)
+        {
+            stNode.pPre->pNext = stNode.pNext;
+        }
+        if (stNode.pNext != nullptr)
+        {
+            stNode.pNext->pPre = stNode.pPre;
+        }
 
-		if (m_pTail == &stNode)
-		{
-			m_pTail = stNode.pPre;
-		}
-		if (m_pHead == &stNode)
-		{
-			m_pHead = stNode.pNext;
-		}
+        if (m_pTail == &stNode)
+        {
+            m_pTail = stNode.pPre;
+        }
+        if (m_pHead == &stNode)
+        {
+            m_pHead = stNode.pNext;
+        }
 
-		stNode.pPre = nullptr;
-		stNode.pNext = nullptr;
-	}
+        stNode.pPre = nullptr;
+        stNode.pNext = nullptr;
+    }
 
     void appendToTail(_SNode& stNode)
     {
@@ -751,7 +815,7 @@ public:
 通过给定的数组构建最大二叉树，并且输出这个树的根节点。<br>
 
 **Example 1:**
-```bash
+```
 输入: [3,2,1,6,0,5]
 输入: 返回下面这棵树的根节点：
 
@@ -826,12 +890,12 @@ public:
 初始位置 (0, 0) 处有一个机器人。给出它的一系列动作，判断这个机器人的移动路线是否形成一个圆圈，换言之就是判断它是否会移回到原来的位置。<br>
 移动顺序由一个字符串表示。每一个动作都是由一个字符来表示的。机器人有效的动作有 R（右），L（左），U（上）和 D（下）。输出应为 true 或 false，表示机器人移动路线是否成圈。<br>
 **示例 1:**
-```bash
+```
 输入: "UD"
 输出: true
 ```
 **示例 2:**
-```bash
+```
 输入: "LL"
 输出: false
 ```
@@ -872,12 +936,12 @@ public:
 给定字符串`J`代表石头中宝石的类型，和字符串`S`代表你拥有的石头。`S`中每个字符代表了一种你拥有的石头的类型，你想知道你拥有的石头中有多少是宝石。<br>
 `J`中的字母不重复，`J`和`S`中的所有字符都是字母。字母区分大小写，因此`"a"`和`"A"`是不同类型的石头。<br>
 **示例 1:**
-```bash
+```
 输入: J = "aA", S = "aAAbbbb"
 输出: 3
 ```
 **示例 2:**
-```bash
+```
 输入: J = "z", S = "ZZ"
 输出: 0
 ```
@@ -911,7 +975,7 @@ public:
 在二维数组`grid`中，`grid[i][j]`代表位于某处的建筑物的高度。 我们被允许增加任何数量（不同建筑物的数量可能不同）的建筑物的高度。 高度 0 也被认为是建筑物。
 最后，从新数组的所有四个方向（即顶部，底部，左侧和右侧）观看的“天际线”必须与原始数组的天际线相同。 城市的天际线是从远处观看时，由所有建筑物形成的矩形的外部轮廓。 请看下面的例子。<br>
 建筑物高度可以增加的最大总和是多少？<br>
-```bash
+```
 例子：
 输入： grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]
 输出： 35
@@ -977,7 +1041,7 @@ public:
 返回移除了所有不包含`1`的子树的原二叉树。<br>
 ( 节点`X`的子树为`X`本身，以及所有`X`的后代。)<br>
 **示例1:**
-```bash
+```
 输入: [1,null,0,0,1]
 输出: [1,null,0,null,1]
  
@@ -987,13 +1051,13 @@ public:
 ```
 ![](images/814_0.png)<br>
 **示例2:**
-```bash
+```
 输入: [1,0,1,0,0,0,1]
 输出: [1,null,1,null,1]
 ```
 ![](images/814_1.png)<br>
 **示例3:**
-```bash
+```
 输入: [1,1,0,1,1,0,1,0]
 输出: [1,1,0,1,1,null,1]
 ```
