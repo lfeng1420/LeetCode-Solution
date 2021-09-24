@@ -7,6 +7,7 @@
 * [8. 字符串转整数 (atoi)](#8.-字符串转整数-(atoi))
 * [23. 合并K个升序链表](#23.-合并k个升序链表)
 * [25. K 个一组翻转链表](#25.-k-个一组翻转链表)
+* [31. 下一个排列](#31.-下一个排列)
 * [33. 搜索旋转排序数组](#33.-搜索旋转排序数组)
 * [52. N皇后 II](#52.-n皇后-ii)
 * [101. 对称二叉树](#101.-对称二叉树)
@@ -315,6 +316,35 @@ public:
         if (llast != nullptr)
             llast->next = first;
         return rhead;
+    }
+};
+```
+
+## <a name='31.-下一个排列'></a>31. 下一个排列
+[题目链接](https://leetcode-cn.com/problems/next-permutation/)
+
+**Code:**
+```cpp
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        int size = nums.size();
+        if (size <= 1) return;
+        for (int index = size - 1; index > 0; --index)
+        {
+            int a= nums[index];
+            int b= nums[index - 1];
+            if (a <= b) continue;
+            int idx = size - 1;
+            for (;idx > index && nums[idx] <= b; --idx);
+            swap(nums[idx], nums[index - 1]);
+            sort(nums.begin() + index, nums.end());
+            return;
+        }
+        for (int index = 0; index < size / 2; ++index)
+        {
+            swap(nums[index], nums[size - 1 - index]);
+        }
     }
 };
 ```
