@@ -9,6 +9,7 @@
 * [25. K 个一组翻转链表](#25.-k-个一组翻转链表)
 * [33. 搜索旋转排序数组](#33.-搜索旋转排序数组)
 * [52. N皇后 II](#52.-n皇后-ii)
+* [101. 对称二叉树](#101.-对称二叉树)
 * [146. LRU 缓存机制](#146.-lru-缓存机制)
 * [206. 反转链表](#206.-反转链表)
 * [215. 数组中的第K个最大元素](#215.-数组中的第k个最大元素)
@@ -409,6 +410,62 @@ public:
         }
 
         return false;
+    }
+};
+```
+
+## <a name='101.-对称二叉树'></a>101. 对称二叉树
+[题目链接](https://leetcode-cn.com/problems/symmetric-tree/)
+
+**Code:**
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        //return isEqual(root->left, root->right);
+        return checkEqual(root->left, root->right);
+    }
+
+    bool checkEqual(TreeNode* left, TreeNode* right)
+    {
+        list<TreeNode*> leftNodes {left};
+        list<TreeNode*> rightNodes {right};
+        while (!leftNodes.empty() && !rightNodes.empty())
+        {
+            left = leftNodes.back();
+            leftNodes.pop_back();
+            right = rightNodes.back();
+            rightNodes.pop_back();
+            if (left == nullptr && right == nullptr) continue;
+            if ((left != nullptr && right == nullptr)
+                || (left == nullptr && right != nullptr)
+                || left->val != right->val) return false;
+            leftNodes.emplace_back(left->left);
+            leftNodes.emplace_back(left->right);
+            rightNodes.emplace_back(right->right);
+            rightNodes.emplace_back(right->left);
+        }
+
+        return leftNodes.empty() && rightNodes.empty();
+    }
+
+    bool isEqual(TreeNode* left, TreeNode* right)
+    {
+        if (left == nullptr) return right == nullptr;
+        if (right == nullptr) return left == nullptr;
+        if (left->val != right->val) return false;
+        return isEqual(left->left, right->right) && isEqual(left->right, right->left);
     }
 };
 ```
