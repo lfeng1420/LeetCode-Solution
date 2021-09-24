@@ -636,6 +636,57 @@ testcases:
  */
 ```
 
+## 160. 相交链表
+[题目链接](https://leetcode-cn.com/problems/reverse-linked-list/)
+
+**Code:**
+```cpp
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        //return solveByCircle(headA, headB);
+        ListNode* a = headA;
+        ListNode* b = headB;
+        while (a != b) 
+        {
+            a = (a != nullptr) ? a->next : headB;
+            b = (b != nullptr) ? b->next : headA;
+        }
+
+        return a;
+    }
+
+    ListNode* solveByCircle(ListNode* headA, ListNode* headB)
+    {
+        ListNode* last = headA;
+        ListNode* next = nullptr;
+        while ((next = last->next) != nullptr) last = last->next;
+        last->next = headB;
+
+        ListNode* slow = headA;
+        ListNode* fast = headA;
+        do
+        {
+            slow = slow->next;
+            fast = fast->next;
+            if (fast == nullptr) { last->next = nullptr; return nullptr; }
+            fast = fast->next;
+            if (fast == nullptr) { last->next = nullptr; return nullptr; }
+        } while (slow != fast);
+
+        ListNode* cur = headA;
+        while (cur != slow)
+        {
+            cur = cur->next;
+            slow = slow->next;
+        }
+
+        last->next = nullptr;
+        return slow;
+    }
+};
+```
+
 ## <a name='206.-反转链表'></a>206. 反转链表
 [题目链接](https://leetcode-cn.com/problems/reverse-linked-list/)
 
