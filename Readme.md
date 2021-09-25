@@ -12,8 +12,10 @@
 * [52. N皇后 II](#52.-n皇后-ii)
 * [101. 对称二叉树](#101.-对称二叉树)
 * [146. LRU 缓存机制](#146.-lru-缓存机制)
+* [160. 相交链表](#160.-相交链表)
 * [206. 反转链表](#206.-反转链表)
 * [215. 数组中的第K个最大元素](#215.-数组中的第k个最大元素)
+* [234. 回文链表](#234.-回文链表)
 * [654. 最大二叉树](#654.-最大二叉树)
 * [657. 判断路线成圈](#657.-判断路线成圈)
 * [771. 宝石与石头](#771.-宝石与石头)
@@ -636,7 +638,7 @@ testcases:
  */
 ```
 
-## 160. 相交链表
+## <a name='160.-相交链表'></a>160. 相交链表
 [题目链接](https://leetcode-cn.com/problems/reverse-linked-list/)
 
 **Code:**
@@ -753,6 +755,64 @@ public:
 };
 ```
 
+## <a name='234.-回文链表'></a>234. 回文链表
+[题目链接](https://leetcode-cn.com/problems/palindrome-linked-list/)
+
+**Code:**
+```cpp
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        if (head->next == nullptr) return true;
+        int len = 0;
+        ListNode* s2 = getCenterNode(head, len);
+        ListNode* s1 = reverseNode(head, s2);
+        return isPalindrome(s1, (len % 2 == 0) ? s2 : s2->next);
+    }
+
+    ListNode* getCenterNode(ListNode* node, int& len)
+    {
+        ListNode* cur = node;
+        len = 0;
+        while (cur != nullptr)
+        {
+            ++len;
+            cur = cur->next;
+        }
+
+        cur = node;
+        for (int index = 0; index < len / 2; ++index)
+            cur = cur->next;
+        return cur;
+    }
+
+    ListNode* reverseNode(ListNode* start, ListNode* end)
+    {
+        ListNode* next = nullptr;
+        while (start != end)
+        {
+            ListNode* temp = start->next;
+            start->next = next;
+            next = start;
+            start = temp;
+        }
+
+        return next;
+    }
+
+    bool isPalindrome(ListNode* s1, ListNode* s2)
+    {
+        while (s1 != nullptr && s2 != nullptr)
+        {
+            if (s1->val != s2->val) return false;
+            s1 = s1->next;
+            s2 = s2->next;
+        }
+
+        return s1 == nullptr && s2 == nullptr;
+    }
+};
+```
 
 ## <a name='654.-最大二叉树'></a>654. 最大二叉树
 [题目链接](https://leetcode-cn.com/problems/maximum-binary-tree)
