@@ -526,6 +526,37 @@ public:
 };
 ```
 
+## 128. 最长连续序列
+[题目链接](https://leetcode-cn.com/problems/longest-consecutive-sequence/)
+
+**Code:**
+```cpp
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        if (nums.empty()) return 0;
+        set<int> sets;
+		for (int num : nums) sets.insert(num);
+		int count = 1;
+		int maxCount = 0;
+		auto it = sets.begin();
+		int pre = *it;
+		for (++it; it != sets.end(); ++it)
+		{
+			if (*it - pre == 1) ++count;
+			else 
+			{ 
+				maxCount = max(maxCount, count);
+				count = 1;
+			}
+			pre = *it;
+		}
+
+		return max(maxCount, count);
+    }
+};
+```
+
 ## <a name='146.-lru-缓存机制'></a>146. LRU 缓存机制
 [题目链接](https://leetcode-cn.com/problems/lru-cache/)
 
