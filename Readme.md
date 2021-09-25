@@ -351,6 +351,30 @@ public:
 };
 ```
 
+## 35. 搜索插入位置
+[题目链接](https://leetcode-cn.com/problems/search-insert-position/)
+
+**Code:**
+```cpp
+// 用递归貌似会超时
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int s = 0, e = nums.size() - 1, m = 0;
+        while (s < e)
+        {
+            m = (s + e) / 2;
+            if (nums[m] == target) return m;
+            if (nums[m] > target) e = m - 1;
+            else s = m + 1;
+        }
+
+        return target > nums[s] ? s + 1 : s;
+    }
+};
+```
+
+
 ## <a name='33.-搜索旋转排序数组'></a>33. 搜索旋转排序数组
 [题目链接](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)
 
@@ -904,6 +928,26 @@ public:
         }
         
         return (nLeftCount == 0 && nUpCount == 0);
+    }
+};
+```
+
+## 674. 最长连续递增序列
+[题目链接](https://leetcode-cn.com/problems/longest-continuous-increasing-subsequence/)
+
+**Code:**
+```cpp
+class Solution {
+public:
+    int findLengthOfLCIS(vector<int>& nums) {
+        int dp = 1;
+        int len = 1;
+        for (int index = 1; index < nums.size(); ++index)
+        {
+            dp = (nums[index] > nums[index - 1]) ? dp + 1 : 1;
+            len = max(len, dp);
+        }
+        return len;
     }
 };
 ```
